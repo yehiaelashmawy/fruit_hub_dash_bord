@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../features/dash_bord/views/dash_bord_view.dart';
+import '../../features/dash_bord/presentation/views/dash_bord_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {

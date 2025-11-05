@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub_dash_bord/features/dash_bord/presentation/views/dash_bord_view.dart';
 import 'core/helper/on_generate_routs.dart';
 
 void main() {
@@ -10,6 +11,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(onGenerateRoute: onGenerateRoute);
+    return MaterialApp(
+      initialRoute: DashBordView.routeName,
+      onGenerateRoute: onGenerateRoute,
+    );
   }
 }
