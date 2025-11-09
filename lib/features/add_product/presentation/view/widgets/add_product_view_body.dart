@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_text_form_feild.dart';
+import 'image_felid.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -42,6 +43,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hintText: 'Product Description',
                 textInputType: TextInputType.text,
               ),
+              SizedBox(height: 20),
+              ImageFelid(onFileChange: (file) {}),
             ],
           ),
         ),
