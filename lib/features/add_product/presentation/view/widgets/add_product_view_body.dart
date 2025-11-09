@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:fruit_hub_dash_bord/core/widgets/custom_button.dart';
+import 'package:fruit_hub_dash_bord/features/add_product/presentation/view/widgets/is_featured_cheackbox.dart';
 import '../../../../../core/widgets/custom_text_form_feild.dart';
 import 'image_felid.dart';
 
@@ -44,7 +45,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 textInputType: TextInputType.text,
               ),
               SizedBox(height: 20),
+              IsFeaturdCheackBox(isCheked: true, onChanged: (value) {}),
+              SizedBox(height: 20),
+
               ImageFelid(onFileChange: (file) {}),
+
+              SizedBox(height: 20),
+              CustomButton(onPressed: () {}, text: 'Save'),
+              SizedBox(height: 30),
             ],
           ),
         ),

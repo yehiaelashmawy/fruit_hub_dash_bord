@@ -76,8 +76,7 @@ class _ImageFelidState extends State<ImageFelid> {
       Icon(Icons.image_outlined, size: 180);
     } else {
       fileImage = File(image!.path);
+      widget.onFileChange(fileImage!);
     }
-
-    widget.onFileChange(fileImage!);
   }
 }
