@@ -26,7 +26,7 @@ class CustomTextFormFeild extends StatelessWidget {
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'هذا الحقل مطلوب';
+          return 'Please enter $hintText';
         }
         return null;
       },

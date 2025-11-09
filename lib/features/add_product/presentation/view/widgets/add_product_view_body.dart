@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fruit_hub_dash_bord/core/widgets/custom_button.dart';
 import 'package:fruit_hub_dash_bord/features/add_product/presentation/view/widgets/is_featured_cheackbox.dart';
@@ -14,6 +15,11 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  late String name, code, description;
+  late num price;
+  bool isFeatured = false;
+  File? image;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,37 +31,90 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
           child: Column(
             children: [
               CustomTextFormFeild(
+                onSaved: (value) {
+                  name = value!;
+                },
                 hintText: 'Product Name',
                 textInputType: TextInputType.text,
               ),
               SizedBox(height: 20),
               CustomTextFormFeild(
+                onSaved: (value) {
+                  if (num.tryParse(value!) != null) {
+                    price = num.parse(value);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please enter a valid number'),
+                      ),
+                    );
+                  }
+                },
                 hintText: 'Product Price',
                 textInputType: TextInputType.number,
               ),
               SizedBox(height: 20),
               CustomTextFormFeild(
+                onSaved: (value) {
+                  code = value!.toLowerCase();
+                },
                 hintText: 'Product Code ',
                 textInputType: TextInputType.number,
               ),
               SizedBox(height: 20),
               CustomTextFormFeild(
+                onSaved: (value) {
+                  description = value!;
+                },
                 maxLines: 5,
                 hintText: 'Product Description',
                 textInputType: TextInputType.text,
               ),
               SizedBox(height: 20),
-              IsFeaturdCheackBox(isCheked: true, onChanged: (value) {}),
+              IsFeaturdCheackBox(
+                onChanged: (value) {
+                  isFeatured = value;
+                },
+              ),
               SizedBox(height: 20),
 
-              ImageFelid(onFileChange: (file) {}),
+              ImageFelid(
+                onFileChange: (file) {
+                  image = file;
+                },
+              ),
 
               SizedBox(height: 20),
-              CustomButton(onPressed: () {}, text: 'Save'),
+              CustomButton(
+                onPressed: () {
+                  if (image != null) {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                    } else {
+                      setState(() {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      });
+                    }
+                  } else {
+                    showErrorBar(context);
+                  }
+                },
+                text: 'Save',
+              ),
               SizedBox(height: 30),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void showErrorBar(context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please select an image'),
+        backgroundColor: Colors.red,
       ),
     );
   }

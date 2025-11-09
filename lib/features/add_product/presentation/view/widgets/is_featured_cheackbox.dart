@@ -4,11 +4,7 @@ import 'package:fruit_hub_dash_bord/features/add_product/presentation/view/widge
 import '../../../../../core/utils/app_text_style.dart';
 
 class IsFeaturdCheackBox extends StatefulWidget {
-  const IsFeaturdCheackBox({
-    super.key,
-    required this.onChanged,
-    required bool isCheked,
-  });
+  const IsFeaturdCheackBox({super.key, required this.onChanged});
 
   final ValueChanged<bool> onChanged;
 
