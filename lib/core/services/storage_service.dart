@@ -1,3 +1,5 @@
+import 'dart:io';
+
 abstract class StorageService {
-  Future<String> uplodeFile(String file);
+  Future<String> uplodeFile(File file, String path);
 }
