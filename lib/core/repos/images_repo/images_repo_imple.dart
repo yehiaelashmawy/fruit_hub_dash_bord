@@ -20,7 +20,7 @@ class ImagesRepoImple implements ImagesRepo {
 
       return right(File(url));
     } catch (e) {
-      return left(Failures(e.toString()));
+      return left(ServerFailure('Failed to upload image'));
     }
   }
 }

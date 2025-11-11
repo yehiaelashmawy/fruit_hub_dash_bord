@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dash_bord/core/widgets/custom_button.dart';
 import 'package:fruit_hub_dash_bord/features/add_product/domin/entities/add_product_input_entity.dart';
 import 'package:fruit_hub_dash_bord/features/add_product/presentation/view/widgets/is_featured_cheackbox.dart';
 import '../../../../../core/widgets/custom_text_form_feild.dart';
+import '../../../manager/cubit/add_product_cubit.dart';
 import 'image_felid.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -91,7 +93,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   if (image != null) {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      // ignore: unused_local_variable
+
                       AddProductInputEntity inputEntity = AddProductInputEntity(
                         name: name,
                         code: code,
@@ -100,6 +102,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         isFeatured: isFeatured,
                         image: image!,
                       );
+                      context.read<AddProductCubit>().addProduct(inputEntity);
                     } else {
                       setState(() {
                         autovalidateMode = AutovalidateMode.always;
