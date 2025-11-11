@@ -17,7 +17,7 @@ class AddProductCubit extends Cubit<AddProductState> {
 
   Future<void> addProduct(AddProductInputEntity addProductInputEntity) async {
     emit(AddProductLoading());
-    var result = await imagesRepo.uploadImage(addProductInputEntity.image!);
+    var result = await imagesRepo.uploadImage(addProductInputEntity.image);
 
     result.fold(
       (f) {

@@ -91,6 +91,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   if (image != null) {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
+                      // ignore: unused_local_variable
                       AddProductInputEntity inputEntity = AddProductInputEntity(
                         name: name,
                         code: code,
