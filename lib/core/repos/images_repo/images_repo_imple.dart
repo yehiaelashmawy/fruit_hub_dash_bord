@@ -5,11 +5,13 @@ import 'package:fruit_hub_dash_bord/core/repos/images_repo/imagrs_repo.dart';
 import 'package:fruit_hub_dash_bord/core/services/storage_service.dart';
 import 'package:fruit_hub_dash_bord/core/utils/backend_endpoint.dart';
 
+import '../../errors/failures.dart';
+
 class ImagesRepoImple implements ImagesRepo {
   final StorageService storageService;
   ImagesRepoImple(this.storageService);
   @override
-  Future<Either<Exception, File>> uploadImage(File image) async {
+  Future<Either<Failures, File>> uploadImage(File image) async {
     try {
       String url = await storageService.uplodeFile(
         image,
@@ -18,7 +20,7 @@ class ImagesRepoImple implements ImagesRepo {
 
       return right(File(url));
     } catch (e) {
-      return left(Exception(e));
+      return left(Failures(e.toString()));
     }
   }
 }
