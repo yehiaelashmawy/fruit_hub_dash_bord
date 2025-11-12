@@ -1,3 +1,0 @@
-const String kSupabaseUrl = 'https://xqaueennbjwdnisktenl.supabase.co';
-const String kSupabaseAoiKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhxYXVlZW5uYmp3ZG5pc2t0ZW5sIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2Mjc5OTY2OCwiZXhwIjoyMDc4Mzc1NjY4fQ.r9EKnDskCrun2qbuuW5O5y3udgXgF2zm8eLp_WtHUVg';
