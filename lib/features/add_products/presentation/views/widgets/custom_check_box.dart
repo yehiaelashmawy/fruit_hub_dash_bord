@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub_dash_bord/core/utils/app_colors.dart';
 
+// ignore: must_be_immutable
 class CustomCheckBox extends StatefulWidget {
   CustomCheckBox({super.key, this.onChanged, this.acceptedConditions = false});
 

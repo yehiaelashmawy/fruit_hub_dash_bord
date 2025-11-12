@@ -9,7 +9,6 @@ import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/add_pr
 import 'package:fruit_hub_dash_bord/features/add_products/presentation/manager/cubit/add_product_cubit.dart';
 import 'package:fruit_hub_dash_bord/features/add_products/presentation/views/widgets/image_picker_container.dart';
 import 'package:fruit_hub_dash_bord/features/add_products/presentation/views/widgets/is_featured_product.dart';
-import 'package:fruit_hub_dash_bord/features/add_products/presentation/views/widgets/is_organic_product.dart';
 
 class AddProductsViewBody extends StatefulWidget {
   const AddProductsViewBody({super.key});
@@ -65,30 +64,7 @@ class _AddProductsViewBodyState extends State<AddProductsViewBody> {
                   },
                 ),
                 const SizedBox(height: 16),
-                CustomTextFormField(
-                  title: 'Expiry Months',
-                  isNum: true,
-                  onSaved: (value) {
-                    expiryMonths = int.parse(value!);
-                  },
-                ),
-                const SizedBox(height: 16),
-                CustomTextFormField(
-                  title: 'Num of Calories',
-                  isNum: true,
-                  onSaved: (value) {
-                    numOfCalories = int.parse(value!);
-                  },
-                ),
-                const SizedBox(height: 16),
-                CustomTextFormField(
-                  title: 'Unit Amount',
-                  isNum: true,
-                  onSaved: (value) {
-                    unitAmount = int.parse(value!);
-                  },
-                ),
-                const SizedBox(height: 16),
+
                 CustomTextFormField(
                   title: 'Product Description',
                   maxLines: 5,
@@ -103,11 +79,7 @@ class _AddProductsViewBodyState extends State<AddProductsViewBody> {
                   },
                 ),
                 const SizedBox(height: 16),
-                IsOrganicProduct(
-                  onChanged: (bool value) {
-                    isOrganic = value;
-                  },
-                ),
+
                 const SizedBox(height: 16),
                 ImagePickerContainer(
                   onImageSelected: (value) {
@@ -128,11 +100,6 @@ class _AddProductsViewBodyState extends State<AddProductsViewBody> {
                             productName: productName,
                             productPrice: productPrice,
                             isFeatured: isFeatured,
-                            expiryMonths: expiryMonths,
-                            numOfCalories: numOfCalories,
-                            unitAmount: unitAmount,
-                            isOrganic: isOrganic,
-                            reviews: [],
                           ),
                         );
                       } else {
@@ -146,6 +113,7 @@ class _AddProductsViewBodyState extends State<AddProductsViewBody> {
                   },
                   title: 'Add Product',
                 ),
+                const SizedBox(height: 16),
               ],
             ),
           ),

@@ -32,9 +32,7 @@ class SupabaseStorage implements StorageServices {
     String fileName = b.basename(file.path);
     String filePath = '${path}/$fileName';
 
-    final storageResponse = await supabaseClient.storage
-        .from(kBucket)
-        .upload(filePath, file);
+    await supabaseClient.storage.from(kBucket).upload(filePath, file);
 
     final String publicUrl = await Supabase.instance.client.storage
         .from(kBucket)

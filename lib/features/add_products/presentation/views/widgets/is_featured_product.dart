@@ -19,6 +19,21 @@ class _IsFeaturedProductState extends State<IsFeaturedProduct> {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: 'Is Featured Product',
+                style: AppTextStyles.semiBold13.copyWith(
+                  color: AppColors.lightPrimaryColor,
+                ),
+              ),
+            ],
+          ),
+          textAlign: TextAlign.right,
+        ),
+        Spacer(),
+
         CustomCheckBox(
           onChanged: (value) {
             isTermsAccepted = value!;
@@ -26,22 +41,6 @@ class _IsFeaturedProductState extends State<IsFeaturedProduct> {
             setState(() {});
           },
           acceptedConditions: isTermsAccepted,
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: 'Is Featured Product',
-                  style: AppTextStyles.semiBold13.copyWith(
-                    color: AppColors.lightPrimaryColor,
-                  ),
-                ),
-              ],
-            ),
-            textAlign: TextAlign.right,
-          ),
         ),
       ],
     );
