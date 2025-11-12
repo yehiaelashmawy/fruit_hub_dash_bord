@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fruit_hub_dash_bord/features/add_products/data/models/review_model.dart';
 import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/add_product_input_entity.dart';
 
 class AddProductInputModel {
@@ -10,6 +11,13 @@ class AddProductInputModel {
   final bool isFeatured;
   final File productImage;
   String? imageUrl;
+  final int expiredMonth;
+  final bool isOrganic;
+  final int numberOfCalories;
+  final num avgRating = 0;
+  final num ratingCount = 0;
+  final int unitAmount;
+  final List<ReviewModel> reviews;
 
   AddProductInputModel({
     required this.productName,
@@ -17,7 +25,13 @@ class AddProductInputModel {
     required this.productPrice,
     required this.productDescription,
     required this.productImage,
+    required this.reviews,
     required this.isFeatured,
+    this.isOrganic = false,
+
+    required this.expiredMonth,
+    required this.numberOfCalories,
+    required this.unitAmount,
     this.imageUrl,
   });
 
@@ -31,7 +45,14 @@ class AddProductInputModel {
       productDescription: addProductInputEntity.productDescription,
       productImage: addProductInputEntity.productImage,
       isFeatured: addProductInputEntity.isFeatured,
+      isOrganic: addProductInputEntity.isOrganic,
+      reviews: addProductInputEntity.reviews
+          .map((e) => ReviewModel.fromEntity(e))
+          .toList(),
       imageUrl: addProductInputEntity.imageUrl,
+      expiredMonth: addProductInputEntity.expiredMonth,
+      numberOfCalories: addProductInputEntity.numberOfCalories,
+      unitAmount: addProductInputEntity.unitAmount,
     );
   }
 
@@ -43,8 +64,11 @@ class AddProductInputModel {
       'productDescription': productDescription,
       'imageUrl': imageUrl,
       'isFeatured': isFeatured,
-
-      //  'reviews': reviews
+      'expiredMonth': expiredMonth,
+      'numberOfCalories': numberOfCalories,
+      'unitAmount': unitAmount,
+      'isOrganic': isOrganic,
+      'reviews': reviews.map((e) => e.toJson()).toList(),
     };
   }
 }
