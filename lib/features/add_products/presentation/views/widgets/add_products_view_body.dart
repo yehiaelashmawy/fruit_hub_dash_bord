@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dash_bord/core/helper_functions/show_snack_bar.dart';
 import 'package:fruit_hub_dash_bord/core/widgets/custom_button.dart';
 import 'package:fruit_hub_dash_bord/core/widgets/custom_text_form_field.dart';
-import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/add_product_input_entity.dart';
+import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/product_entity.dart';
 import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/review_entity.dart';
 import 'package:fruit_hub_dash_bord/features/add_products/presentation/manager/cubit/add_product_cubit.dart';
 import 'package:fruit_hub_dash_bord/features/add_products/presentation/views/widgets/image_picker_container.dart';
@@ -121,7 +121,7 @@ class _AddProductsViewBodyState extends State<AddProductsViewBody> {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
                         context.read<AddProductCubit>().addProduct(
-                          addProductInputEntity: AddProductInputEntity(
+                          addProductInputEntity: ProductEntity(
                             productCode: productCode,
                             productDescription: productDescription,
                             productImage: imageFile!,

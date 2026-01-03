@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dash_bord/core/repos/image_repo/image_repo.dart';
 import 'package:fruit_hub_dash_bord/core/repos/product_repo/product_repo.dart';
-import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/add_product_input_entity.dart';
+import 'package:fruit_hub_dash_bord/features/add_products/domain/entities/product_entity.dart';
 import 'package:meta/meta.dart';
 
 part 'add_product_state.dart';
@@ -13,7 +13,7 @@ class AddProductCubit extends Cubit<AddProductState> {
   final ImageRepo imageRepo;
 
   Future<void> addProduct({
-    required AddProductInputEntity addProductInputEntity,
+    required ProductEntity addProductInputEntity,
   }) async {
     emit(AddProductLoading());
     var response1 = await imageRepo.uploadImage(
